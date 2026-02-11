@@ -17,8 +17,8 @@
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="univers.html">Univers</a></li>
-                    <li><a href="combat.html">Système de combat</a></li>
                     <li><a href="fonctionnalités.html">Fonctionnalités</a></li>
+                    <li><a href="combat.html">Système de combat</a></li>
                     <li><a href="architecture.html">Architecture GL</a></li>
                     <li><a href="equipe.html">Equipe</a></li>
                 </ul>
@@ -27,7 +27,7 @@
         <hr>
         <main>
             <aside>
-                <h3>Sommaire :</h3>
+                <h2>Sommaire Architecture:</h2>
                 <nav>
                     <ul>
                         <li><a href="#concept">Concept du module Génie Logiciel</a></li>
@@ -51,7 +51,7 @@
                 <h3>Le Patron Modèle-Vue-Contrôleur (MVC)</h3>
                 <p>Nous avons adapté l'architecture des programmes exemples du professeur pour notre simulation.</p>
                 <figure>
-                    <img src="img/archi_mvc.png" alt="Schéma de l'architecture MVC">
+                    <img class="images" src="img/archi_mvc.png" alt="Schéma de l'architecture MVC">
                     <figcaption>Figure : Architecture MVC</figcaption>
                 </figure>
             </section>
@@ -88,8 +88,8 @@
                 <h3>La Boucle de Simulation</h3>
                 <p>Le cours de GL insiste sur la gestion du temps. Nous utilisons un <code>Timer</code> ou un Thread dédié pour cadencer la simulation.</p>
                 <p>Algorithme simplifié d'un tour :</p>
-                <code>1. Moteur : Calculer les nouveaux déplacements.</code>
-                <code>2. Moteur : Résoudre les interactions (Combats, Reproduction).</code>
+                <code>1. Moteur : Calculer les nouveaux déplacements.</code><br>
+                <code>2. Moteur : Résoudre les interactions (Combats, Reproduction).</code><br>
                 <code>3. IHM : repaint() -> Rafraîchir l'affichage.</code>
             </section>
         </main>

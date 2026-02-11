@@ -10,15 +10,15 @@
     </head>
     <body>
         <header>
-            <h1>Projet Bêtes : Simulation d'écosystème</h1>
             <img src="img/logo.png" alt = "logo université">
+            <h1>Projet Bêtes : Simulation d'écosystème</h1>
             <p>Module <em>Génie Logiciel</em> et <em>Développement Web</em> - L2 Informatique</p>
             <nav>
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="univers.html">Univers</a></li>
-                    <li><a href="combat.html">Système de combat</a></li>
                     <li><a href="fonctionnalités.html">Fonctionnalités</a></li>
+                    <li><a href="combat.html">Système de combat</a></li>
                     <li><a href="architecture.html">Architecture GL</a></li>
                     <li><a href="equipe.html">Equipe</a></li>
                 </ul>
@@ -27,7 +27,7 @@
         <hr>
         <main>
             <aside>
-                <h3>Sommaire du combat :</h3>
+                <h2>Sommaire du combat :</h2>
                 <nav>
                     <ul>
                         <li><a href="#concept">Concept d'affrontement des bêtes dans la simulation"</a></li>
@@ -56,7 +56,7 @@
                 <article>
                     <h4>Facteurs conditionnels</h4>
                     <ul>
-                        <li><strong>Malus de fatigue :</strong> Si <code>Energie < 20%</code> (bête affamée ou épuisée), le score est multiplié par <strong>0.5</strong>.</li>
+                        <li><strong>Malus de fatigue :</strong> Si <code>Energie &lt; 20%</code> (bête affamée ou épuisée), le score est multiplié par <strong>0.5</strong>.</li>
                         <li><strong>Bonus terrain :</strong> Si la bête est dans son <em>Biome favori</em>, le score est multiplié par <strong>1.2</strong>.</li>
                     </ul>
                 </article>
@@ -77,15 +77,13 @@
             </section>
             <section id="phase3">
                 <h3>Phase 3 : Le Tirage Aléatoire et le "X-Factor"</h3>
-                <p>
-                    Pour simuler le combat, le moteur tire un nombre aléatoire (le destin).
-                </p>
+                <p>Pour simuler le combat, le moteur tire un nombre aléatoire (le destin).</p>
                 <code>double x = Math.random(); // Génère un nombre entre 0.0 et 1.0</code>
 
                 <h4>Résolution standard</h4>
                 <ul>
-                    <li>Si <code>x < P_A</code> (0.80) → <strong>Le Abeille gagne</strong> (Logique respectée).</li>
-                    <li>Si <code>x >= P_A</code> → <strong>Le Coccinelle gagne</strong> (SURPRISE ! Coup de sabot chanceux).</li>
+                    <li>Si <code>x &lt; P_A</code> (0.80) → <strong>Le Abeille gagne</strong> (Logique respectée).</li>
+                    <li>Si <code>x &gt;= P_A</code> → <strong>Le Coccinelle gagne</strong> (SURPRISE ! Coup de sabot chanceux).</li>
                 </ul>
 
                 <h4>Le mécanisme de Coup Critique</h4>
@@ -97,12 +95,12 @@
                         <th>Effet</th>
                     </tr>
                     <tr>
-                        <td><code>x < 0.05</code></td>
+                        <td><code>x &lt; 0.05</code></td>
                         <td><strong>Victoire Écrasante (Fatality)</strong></td>
                         <td>Dégâts doublés pour le perdant.</td>
                     </tr>
                     <tr>
-                        <td><code>x > 0.95</code></td>
+                        <td><code>x &gt; 0.95</code></td>
                         <td><strong>Renversement Total</strong></td>
                         <td>Si l'outsider gagne ici, il ne prend aucun dégât.</td>
                     </tr>
@@ -125,7 +123,7 @@
                     <h4>Pour le Vainqueur : Gain d'expérience</h4>
                     <ul>
                         <li><strong>Gain d'XP :</strong> La Puissance augmente (+1).</li>
-                        <li><strong>Bonus Outsider :</strong> Si le vainqueur avait une probabilité < 40%, il gagne plus d'XP (+2 ou +3) car le combat était héroïque.</li>
+                        <li><strong>Bonus Outsider :</strong> Si le vainqueur avait une probabilité &lt; 40%, il gagne plus d'XP (+2 ou +3) car le combat était héroïque.</li>
                         <li><strong>Coût :</strong> Il perd une petite quantité d'énergie (fatigue du combat).</li>
                     </ul>
                 </article>
