@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <link rel="icon" type="image/x-icon" href="img/logo.png">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <meta charset="UTF-8">
+        <meta name="description" content="Architecture logicielle du projet Bêtes : Patron MVC et séparation Moteur/IHM. UE Génie Logiciel." >
+        <meta name="author" content="RABENANDRASANA Hajatiana - ANDRIAMANANTENASOA Aina - RATSIMBASON Fanantenana">
+        <title>Architecture GL - Projet Bêtes</title>
+    </head>
+    <body>
+        <header>
+            <img src="img/logo.png" alt = "logo université">
+            <h1>Architecture Logicielle</h1>
+            <p>Module <em>Génie Logiciel</em> et <em>Développement Web</em> - L2 Informatique</p>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="univers.html">univers</a></li>
+                    <li><a href="combat.html">Système de combat</a></li>
+                    
+                    <li><a href="architecture.html">Architecture GL</a></li>
+                    <li><a href="equipe.html">Equipe</a></li>
+                </ul>
+            </nav>
+        </header>
+        <hr>
+        <main>
+            <aside>
+                <h3>Sommaire :</h3>
+                <nav>
+                    <ul>
+                        <li><a href="#concept">Concept du module Génie Logiciel</a></li>
+                        <li><a href="#mvc">Le Patron MVC</a></li>
+                        <li><a href="#moteur">Le Moteur (Modèle)</a></li>
+                        <li><a href="#ihm">L'Interface (Vue)</a></li>
+                        <li><a href="#boucle">Boucle de simulation</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <section id="concept">
+                <h2>Philosophie de conception : Cours Génie Logiciel</h2>
+                <p>Pour garantir la maintenabilité et l'évolution du projet "Bêtes", nous avons strictement appliqué le principe de <strong>Séparation</strong> entre Moteur et IHM graphique.</p>
+                <p>L'application est divisée en deux blocs majeurs qui communiquent via des interfaces :</p>
+                <ol>
+                    <li>Le <strong>Moteur</strong> (Logique métier, calculs, données).</li>
+                    <li>L'<strong>IHM</strong> (Affichage Swing, Grille 2D, Événements souris).</li>
+                </ol>
+            </section>
+            <section id="mvc">
+                <h3>Le Patron Modèle-Vue-Contrôleur (MVC)</h3>
+                <p>Nous avons adapté l'architecture des programmes exemples du professeur pour notre simulation.</p>
+                <figure>
+                    <img src="img/archi_mvc.png" alt="Schéma de l'architecture MVC">
+                    <figcaption>Figure : Architecture MVC</figcaption>
+                </figure>
+            </section>
+            <section id="moteur">
+                <h3>La partie "Moteur" (Modèle)</h3>
+                <p>C'est le cœur du programme. Il ne connaît pas l'existence de l'interface graphique (pas d'import <code>javax.swing</code> ici).</p>
+                <table>
+                    <caption>Tableau : les éléments du Moteur logiciel</caption>
+                    <thead>
+                        <tr>
+                            <th>La Grille (2D)</th>
+                            <th>Les Agents (Bêtes)</th>
+                            <th>Le Maître du jeu de l'écosystème</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Un tableau à deux dimensions N * N stockant les objets.</td>
+                            <td>Classes possédant leurs propres thread ou gérées séquentiellement, contenant les données (PV, Energie, Puissance).</td>
+                            <td>Décide les tours et paramètre la carte et le nombre de bête au début de la simulation.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section id="ihm">
+                <h3>La partie "Visualisation" (Vue)</h3>
+                <p>L’interface graphique permet de visualiser en temps réel l’évolution de l’écosystème sur une grille 2D, tout en offrant à l’utilisateur des outils pour contrôler la simulation (vitesse, pause) et inspecter les "pensées" de chaque créature via son journal de bord.</p>
+                <ul>
+                    <li><strong>Héritage direct</strong>:<code>Bete</code> étend<code>MobileElement</code> pour hériter automatiquement de la gestion de la position (Block), évitant la redondance de code.</li>
+                    <li><strong>Uniformité</strong>:la <code>Bete</code> (et la <code>Nourriture</code>) est traitée comme une entité standard positionnée sur la grille.</li>
+                </ul>   
+            </section>
+            <section id="boucle">
+                <h3>La Boucle de Simulation</h3>
+                <p>Le cours de GL insiste sur la gestion du temps. Nous utilisons un <code>Timer</code> ou un Thread dédié pour cadencer la simulation.</p>
+                <p>Algorithme simplifié d'un tour :</p>
+                <code>1. Moteur : Calculer les nouveaux déplacements.</code>
+                <code>2. Moteur : Résoudre les interactions (Combats, Reproduction).</code>
+                <code>3. IHM : repaint() -> Rafraîchir l'affichage.</code>
+            </section>
+        </main>
+        <hr>
+        <footer>
+            <p><a href="#top">Haut de page</a></p>
+            <div>2026 - L2 Informatique - Groupe B - Cadre : UE Développement Web et Génie Logiciel et Projet - RABENANDRASANA Hajatiana, ANDRIAMANANTENASOA Aina et RATSIMBASON Fanantenana - CY Paris Université</div>
+        </footer>
+    </body>
+</html>
